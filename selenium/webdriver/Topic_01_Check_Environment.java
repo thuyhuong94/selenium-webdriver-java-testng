@@ -32,7 +32,7 @@ public class Topic_01_Check_Environment {
 	public void TC_02_ValidatePageTitle() {
 		// Login Page title
 		String loginPageTitle = driver.getTitle();
-		Assert.assertEquals(loginPageTitle, "Guru99 Bank Home Page.");
+		Assert.assertEquals(loginPageTitle, "Guru99 Bank Home Page");
 	}
 
 	@Test
