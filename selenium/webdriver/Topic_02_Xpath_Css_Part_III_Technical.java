@@ -44,7 +44,15 @@ public class Topic_02_Xpath_Css_Part_III_Technical {
 		sleepinSeconds(3);
 		driver.findElement(By.xpath("//button[@name='send']")).click();
 		sleepinSeconds(3);
-		driver.findElement(By.xpath("//p[contains(.,\"huong94@gmail.com\")]")).getText().contains("huong nguyen");
+		String info = driver.findElement(By.xpath("//p[contains(.,\"huong94@gmail.com\")]")).getText();
+		System.out.println(info);
+		Assert.assertTrue(info.contains("huong nguyen"));
+		sleepinSeconds(3);
+		driver.findElement(By.xpath("//div[@class='account-cart-wrapper']//span[text()='Account']")).click();
+		sleepinSeconds(3);
+		driver.findElement(By.xpath("//a[text()='Log Out']")).click();
+		sleepinSeconds(3);
+		driver.findElement(By.xpath("//body[contains(@class,'cms-index-index cms-home')]")).isDisplayed();
 		sleepinSeconds(3);
 	}
 	@Test
