@@ -1,5 +1,6 @@
 package webdriver;
 
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -12,15 +13,17 @@ import org.testng.annotations.Test;
 public class Topic_02_Xpath_Css_Part_II_Technical {
 
 	WebDriver driver;
-	byte timeinsecond = 1;
-	String firstname = "nguyen";
-	String middlename = "thuy";
-	String lastname = "huong";
-	String fullname = firstname + ' ' + middlename + ' ' + lastname;
-	String email = "thuyhuong08@gmail.com";
-	String password = "123456";
+	byte timeinsecond;
+	String firstname, middlename, lastname, fullname, email, password;
 	@BeforeClass
 	public void beforClass () {
+		timeinsecond = 1;
+		firstname = "nguyen";
+		middlename = "thuy";
+		lastname = "huong";
+		fullname = firstname + ' ' + middlename + ' ' + lastname;
+		email = "thuyhuong" + generatemail();
+		password = "123456";
 		// Mo trinh duyet firefox
 		driver = new FirefoxDriver();
 		// set thoi gian cho de tim thay element
@@ -115,8 +118,9 @@ public class Topic_02_Xpath_Css_Part_II_Technical {
 		sleepinSeconds(timeinsecond);
 		driver.findElement(By.xpath("//a[text()='Log Out']")).click();
 		sleepinSeconds(timeinsecond);
-		driver.findElement(By.xpath("//body[contains(@class,'cms-index-index cms-home')]")).isDisplayed();
+		Assert.assertTrue(driver.findElement(By.xpath("//body[contains(@class,'cms-index-index cms-home')]")).isDisplayed());
 		sleepinSeconds(timeinsecond);
+		
 	}
 	
 	@Test
@@ -140,6 +144,7 @@ public class Topic_02_Xpath_Css_Part_II_Technical {
 		Assert.assertTrue(info.contains(fullname));
 		Assert.assertTrue(info.contains(email));
 		sleepinSeconds(timeinsecond);
+		
 	}
 	
 
@@ -147,7 +152,10 @@ public class Topic_02_Xpath_Css_Part_II_Technical {
 	public void afterClass() {
 		driver.quit();
 	}
-	
+	public String generatemail () {
+		Random rand = new Random();
+		return rand.nextInt(9999) + "@gmail.com";
+	}
 	public void sleepinSeconds(long timeoutinsecond) {
 		try {
 			Thread.sleep(timeoutinsecond*1000);

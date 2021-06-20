@@ -68,8 +68,7 @@ public class Topic_02_Xpath_Css_Part_III_Technical {
 		driver.findElement(By.xpath("//a[text()='Mobile']")).click();
 		sleepinSeconds(3);
 		driver.findElement(By.xpath("//a[text()='Samsung Galaxy']/parent::h2/following-sibling::div[@class ='actions']/button")).click();
-		sleepinSeconds(3);
-		
+		sleepinSeconds(3);	
 	}
 
 	@AfterClass
