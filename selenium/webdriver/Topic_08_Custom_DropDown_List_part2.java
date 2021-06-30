@@ -48,11 +48,11 @@ public class Topic_08_Custom_DropDown_List_part2 {
 		String item = "Opel";
 		EnterAndSelectItemInCustomDropdown ("//div[@id='default-place']/input", "//div[@id='default-place']//li", item);
 		sleepinSeconds(timeinsecond);
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='default-place']/input")).getAttribute("value"), item);
-        item = "Volkswagen";
+		Assert.assertEquals(driver.findElement(By.xpath("//div[@id='default-place']/input")).getAttribute("value"), item);
+		item = "Volkswagen";
 		EnterAndSelectItemInCustomDropdown ("//div[@id='default-place']/input", "//div[@id='default-place']//li", item);
 		sleepinSeconds(timeinsecond);
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='default-place']/input")).getAttribute("value"), item);
+		Assert.assertEquals(driver.findElement(By.xpath("//div[@id='default-place']/input")).getAttribute("value"), item);
 	}
 	
 //	@Test
@@ -61,11 +61,11 @@ public class Topic_08_Custom_DropDown_List_part2 {
 		String item = "Andorra";
 		EnterAndTabItemInCustomDropdown ("//input[@class='search']", item);
 		sleepinSeconds(timeinsecond);
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@class='divider text']")).getText(), item);
-        item = "Afghanistan";
+		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='divider text']")).getText(), item);
+		item = "Afghanistan";
 		EnterAndTabItemInCustomDropdown ("//input[@class='search']", item);
 		sleepinSeconds(timeinsecond);
-        Assert.assertEquals(driver.findElement(By.xpath("//div[@class='divider text']")).getText(), item);
+		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='divider text']")).getText(), item);
 	}
 	
 	@Test
@@ -80,19 +80,19 @@ public class Topic_08_Custom_DropDown_List_part2 {
 		String selecteditempath = "//li[@class='selected']//input";
 		SelectMultipleItemInCustomDropdown(parentxpath, childxpath, selecteditempath, selectedmonthlessthan4);
 		sleepinSeconds(timeinsecond);
-        Assert.assertTrue(areItemSelected( parentxpathtogettext, selecteditempath, selectedmonthlessthan4));
-        DeSelectMultipleItemInCustomDropdown (parentxpath, childxpath+"[text()='[Select all]']");
+		Assert.assertTrue(areItemSelected( parentxpathtogettext, selecteditempath, selectedmonthlessthan4));
+		DeSelectMultipleItemInCustomDropdown (parentxpath, childxpath+"[text()='[Select all]']");
 
-        sleepinSeconds(4);
-        SelectMultipleItemInCustomDropdown(parentxpath, childxpath, selecteditempath, selectedmonthgt3andlt12);
+		sleepinSeconds(timeinsecond);
+		SelectMultipleItemInCustomDropdown(parentxpath, childxpath, selecteditempath, selectedmonthgt3andlt12);
 		sleepinSeconds(timeinsecond);
 		Assert.assertTrue(areItemSelected( parentxpathtogettext, selecteditempath, selectedmonthgt3andlt12));
 		DeSelectMultipleItemInCustomDropdown (parentxpath, childxpath+"[text()='[Select all]']");
         
 		SelectMultipleItemInCustomDropdown(parentxpath, childxpath, selecteditempath, selectedAll);
-        sleepinSeconds(timeinsecond);
-        Assert.assertTrue(areItemSelected( parentxpathtogettext, selecteditempath, selectedAll));
-        DeSelectMultipleItemInCustomDropdown (parentxpath, childxpath+"[text()='[Select all]']");
+		sleepinSeconds(timeinsecond);
+		Assert.assertTrue(areItemSelected( parentxpathtogettext, selecteditempath, selectedAll));
+		DeSelectMultipleItemInCustomDropdown (parentxpath, childxpath+"[text()='[Select all]']");
 	}
 
 	@AfterClass
