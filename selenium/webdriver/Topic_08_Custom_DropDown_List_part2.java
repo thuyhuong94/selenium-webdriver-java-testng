@@ -77,22 +77,23 @@ public class Topic_08_Custom_DropDown_List_part2 {
 		String parentxpath = "//label[contains(text(),'Group Select')]/parent::div/preceding-sibling::div//button";
 		String parentxpathtogettext = "//label[contains(text(),'Group Select')]/parent::div/preceding-sibling::div//button/span";
 		String childxpath = "//label[contains(text(),'Group Select')]/parent::div/preceding-sibling::div//span";
+		String chilxpathtaginput = "//label[contains(text(),'Group Select')]/parent::div/preceding-sibling::div//input";
 		String selecteditempath = "//li[@class='selected']//input";
 		SelectMultipleItemInCustomDropdown(parentxpath, childxpath, selecteditempath, selectedmonthlessthan4);
 		sleepinSeconds(timeinsecond);
 		Assert.assertTrue(areItemSelected( parentxpathtogettext, selecteditempath, selectedmonthlessthan4));
-		DeSelectMultipleItemInCustomDropdown (parentxpath, childxpath+"[text()='[Select all]']");
+		DeSelectMultipleItemInCustomDropdown (parentxpath, chilxpathtaginput);
 
 		sleepinSeconds(timeinsecond);
 		SelectMultipleItemInCustomDropdown(parentxpath, childxpath, selecteditempath, selectedmonthgt3andlt12);
 		sleepinSeconds(timeinsecond);
 		Assert.assertTrue(areItemSelected( parentxpathtogettext, selecteditempath, selectedmonthgt3andlt12));
-		DeSelectMultipleItemInCustomDropdown (parentxpath, childxpath+"[text()='[Select all]']");
+		DeSelectMultipleItemInCustomDropdown (parentxpath, chilxpathtaginput);
         
 		SelectMultipleItemInCustomDropdown(parentxpath, childxpath, selecteditempath, selectedAll);
 		sleepinSeconds(timeinsecond);
 		Assert.assertTrue(areItemSelected( parentxpathtogettext, selecteditempath, selectedAll));
-		DeSelectMultipleItemInCustomDropdown (parentxpath, childxpath+"[text()='[Select all]']");
+		DeSelectMultipleItemInCustomDropdown (parentxpath, chilxpathtaginput);
 	}
 
 	@AfterClass
@@ -133,7 +134,6 @@ public class Topic_08_Custom_DropDown_List_part2 {
 	
 	public void SelectMultipleItemInCustomDropdown (String parentxpath, String childxpath, String selectedItemxpath, String[] expectedItems) {
 		// click element to list out all item
-		
 		driver.findElement(By.xpath(parentxpath)).click();
 		//wait to all element are loaded and save all item into List element
 		List<WebElement> allElements = expliciWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(childxpath)));
@@ -160,20 +160,24 @@ public class Topic_08_Custom_DropDown_List_part2 {
 		}
 	}
 	
-	public void DeSelectMultipleItemInCustomDropdown (String parentxpath, String childxpath) {
+	public void DeSelectMultipleItemInCustomDropdown (String parentxpath, String chilxpathtaginput) {
 		// click element to list out all item
+		driver.findElement(By.xpath("//label[contains(text(),'Group Select')]")).click();
 		driver.findElement(By.xpath(parentxpath)).click();
-		sleepinSeconds(1);
-		driver.findElement(By.xpath(parentxpath)).click();
-		sleepinSeconds(1);
-		if (!driver.findElement(By.xpath(parentxpath)).getText().equals("All selected")) {
-			driver.findElement(By.xpath(childxpath)).click();
-			sleepinSeconds(1);
-		}	
-		driver.findElement(By.xpath(childxpath)).click();
-		sleepinSeconds(1);
-		driver.findElement(By.xpath(parentxpath)).click();
-		sleepinSeconds(1);
+		//wait to all element are loaded and save all item into List element
+		List<WebElement> allElements = expliciWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(chilxpathtaginput)));
+		// find item that is required
+		// duyet qua tung item
+		for (WebElement childElement : allElements) {
+			if (childElement.isSelected()) {
+				// Scroll den item can chon (neu thay item thi khong can scroll, neu ko thay thi scroll)
+				jsExecutor.executeScript("arguments[0].scrollIntoView(true);", childElement);
+				sleepinSeconds(1);	
+				childElement.click();
+				sleepinSeconds(1);
+			}
+		}
+		driver.findElement(By.xpath("//label[contains(text(),'Group Select')]")).click();
 	}
 	
 	public boolean areItemSelected (String parentxpath, String selectedItemxpath, String[] months) {
