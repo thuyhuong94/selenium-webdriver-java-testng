@@ -137,7 +137,7 @@ public class Topic_02_Xpath_Css_Part_II_Technical {
 		sleepinSeconds(timeinsecond);
 		String dashboad = driver.findElement(By.xpath("//h1[text()='My Dashboard']")).getText();
 		System.out.println(dashboad);
-		Assert.assertEquals(dashboad, "My Dashboard".toUpperCase());
+		Assert.assertTrue(dashboad.equalsIgnoreCase("My Dashboard"));
 		Assert.assertEquals(driver.findElement(By.xpath("//strong[contains(text(),\"Hello\")]")).getText(), "Hello, "+fullname+"!");
 		String info = driver.findElement(By.xpath("//a[text()='Change Password']/parent::p")).getText();
 		System.out.println(info);

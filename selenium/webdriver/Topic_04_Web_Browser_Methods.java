@@ -45,7 +45,6 @@ public class Topic_04_Web_Browser_Methods {
 		
 		//Close current tab /process switch/tab window
 		driver.close();
-		
 		//Quit browser 
 		driver.quit();
 		
