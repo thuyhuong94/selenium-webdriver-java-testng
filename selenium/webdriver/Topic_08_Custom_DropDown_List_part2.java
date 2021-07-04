@@ -42,9 +42,11 @@ public class Topic_08_Custom_DropDown_List_part2 {
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);	 
 	}
 		
-//	@Test
+	@Test
 	public void TC_01_Editable () {
 		driver.get("http://indrimuska.github.io/jquery-editable-select/");
+		//select item and verify item is selected
+		// cach1: use function getAttribute of selenium
 		String item = "Opel";
 		EnterAndSelectItemInCustomDropdown ("//div[@id='default-place']/input", "//div[@id='default-place']//li", item);
 		sleepinSeconds(timeinsecond);
@@ -53,9 +55,21 @@ public class Topic_08_Custom_DropDown_List_part2 {
 		EnterAndSelectItemInCustomDropdown ("//div[@id='default-place']/input", "//div[@id='default-place']//li", item);
 		sleepinSeconds(timeinsecond);
 		Assert.assertEquals(driver.findElement(By.xpath("//div[@id='default-place']/input")).getAttribute("value"), item);
+		//cach 2: trick by function getAttibute of JavascriptExecutor
+		driver.navigate().refresh();
+		item = "Opel";
+		EnterAndSelectItemInCustomDropdown ("//div[@id='default-place']/input", "//div[@id='default-place']//li", item);
+		sleepinSeconds(timeinsecond);
+		String value = (String) jsExecutor.executeScript("return document.querySelector('#default-place input').value");
+		Assert.assertEquals(value, item);
+		item = "Volkswagen";
+		EnterAndSelectItemInCustomDropdown ("//div[@id='default-place']/input", "//div[@id='default-place']//li", item);
+		sleepinSeconds(timeinsecond);
+		value = (String) jsExecutor.executeScript("return document.querySelector('#default-place input').value");
+		Assert.assertEquals(value, item);
 	}
 	
-//	@Test
+	@Test
 	public void TC_02_Editable_with_TAB () {
 		driver.get("https://react.semantic-ui.com/maximize/dropdown-example-search-selection/");
 		String item = "Andorra";
