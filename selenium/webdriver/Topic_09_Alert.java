@@ -40,14 +40,13 @@ public class Topic_09_Alert {
 		driver = new ChromeDriver();
 		//set flexible timeout
 		expliciWait = new WebDriverWait(driver, 15);
-		//switch driver to alert
 		//Ep kieu tuong minh cho driver
 		jsExecutor = (JavascriptExecutor) driver;
 		// set thoi gian cho de tim thay element
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);	 
 	}
-		
-//	@Test
+
+	@Test
 	public void TC_01_Accept_Alert () {
 		driver.get("https://automationfc.github.io/basic-form/index.html");
 		driver.findElement(By.xpath("//button[text()='Click for JS Alert']")).click();
@@ -109,7 +108,7 @@ public class Topic_09_Alert {
 		Assert.assertTrue(driver.findElement(By.xpath("//p[contains(text(), 'Congratulations! You must have the proper credentials.')]")).isDisplayed());
 	}
 	
-	@Test
+//	@Test
 	public void TC_05_Authentication_Alert_useAutoIT () throws IOException {
 		driver.get("https://the-internet.herokuapp.com/");
 		// Bat alert: Execute script truoc
@@ -117,7 +116,7 @@ public class Topic_09_Alert {
 		String password = "admin";
 		Runtime.getRuntime().exec(new String[] {authautoIT, username, password});
 		//Mo app sau
-		driver.findElement(By.xpath("//a[text()='Basic Auth']")).click();;
+		driver.findElement(By.xpath("//a[text()='Basic Auth']")).click();
 		sleepinSeconds(timeinsecond);
 		Assert.assertTrue(driver.findElement(By.xpath("//p[contains(text(), 'Congratulations! You must have the proper credentials.')]")).isDisplayed());
 	}
