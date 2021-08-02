@@ -53,7 +53,7 @@ public class Topic_13_Javascript_Executor {
 		driver.manage().window().maximize();
 	}
 		
-//	@Test
+	@Test
 	public void TC_01_Guru99 () {
 		// Truy cap vao trang Guru99
 		navigateToUrlByJS("http://live.demoguru99.com/");
@@ -84,7 +84,7 @@ public class Topic_13_Javascript_Executor {
 		Assert.assertEquals(domain, "demo.guru99.com");
 	}
 	
-//	@Test
+	@Test
 	public void TC_02_Validation_Message () {
 		String name = "Thuy Huong";
 		String password = "123456";
@@ -136,7 +136,7 @@ public class Topic_13_Javascript_Executor {
 		Assert.assertEquals(getElementValidationMessage ("//select"), "Please select an item in the list.");	
 	}
 	
-//	@Test
+	@Test
 	public void TC_03_Validation_Message_Ubuntu () {
 		String prefixemail = "thuy";
 		String emailwithoutsuffix = "thuy@";
@@ -159,7 +159,7 @@ public class Topic_13_Javascript_Executor {
 		Assert.assertEquals(getElementValidationMessage (emailXpath), "Please enter a part following '@'. '" + emailwithoutsuffix +"' is incomplete.");
 	}
 	
-//	@Test
+	@Test
 	public void TC_04_Remove_Attribute () {
 		String firstname, middlename, lastname, fullname, email, emailaddress, loginPageUrl, userid, password, passwordorig, name, gender, DoB, address, city, state, pin, phone;
 		firstname = "nguyen";
