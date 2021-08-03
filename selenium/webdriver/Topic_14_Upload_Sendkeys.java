@@ -23,6 +23,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -62,6 +63,8 @@ public class Topic_14_Upload_Sendkeys {
 		// Mo trinh duyet firefox
 		System.setProperty("webdriver.chrome.driver", projectPath + "/browserDrivers/chromedriver.exe");
 		driver = new ChromeDriver();
+//		System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver.exe");
+//		driver = new FirefoxDriver();
 		//set flexible timeout
 		expliciWait = new WebDriverWait(driver, 15);
 		//Ep kieu tuong minh cho driver
