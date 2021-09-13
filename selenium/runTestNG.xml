@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite" parallel="false">
+	<!-- Global -->
+	<parameter name="url" value="https://www.facebook.com/" />
+	<listeners>
+		<listener class-name="testng.Topic_09_Listener"/>
+	</listeners>
+	<!-- <test name="Run on Firefox">
+		Local
+		<parameter name="browser" value="firefox" />
+		<classes>
+			<class name="testng.Topic_06_Parameter_MultiBrowser" />
+		</classes>
+	</test> -->
+	<test name="Run on Chrome">
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="testng.Topic_08_DependenciesTest" />
+		</classes>
+	</test>
+</suite>

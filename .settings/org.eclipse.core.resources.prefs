@@ -1,4 +1,11 @@
 eclipse.preferences.version=1
+encoding//selenium/testng/Topic_02_Asserttions.java=UTF-8
+encoding//selenium/testng/Topic_03_Group.java=UTF-8
+encoding//selenium/testng/Topic_04_Priority_skip_description.java=UTF-8
+encoding//selenium/testng/Topic_05_DataProvider.java=UTF-8
+encoding//selenium/testng/Topic_06_Parameter_MultiBrowser.java=UTF-8
+encoding//selenium/testng/Topic_07_Loop.java=UTF-8
+encoding//selenium/testng/Topic_08_DependenciesTest.java=UTF-8
 encoding//selenium/webdriver/Topic_09_Alert.java=UTF-8
 encoding//selenium/webdriver/Topic_09_Button_Radio_Checkbox.java=UTF-8
 encoding//selenium/webdriver/Topic_10_User_Interactions_part1.java=UTF-8
