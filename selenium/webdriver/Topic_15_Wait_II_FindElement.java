@@ -32,7 +32,6 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.sun.glass.events.KeyEvent;
 
 public class Topic_15_Wait_II_FindElement {
 
